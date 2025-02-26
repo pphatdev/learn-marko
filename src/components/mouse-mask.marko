@@ -4,19 +4,22 @@ class {
   onCreate() {
     this.state = { x: "center", y: "center" };
     this.boundMove = this.move.bind(this);
+    console.log("Mouse mask created");
   }
   onMount() {
-    window.addEventListener("mousemove", this.boundMove);
+    window.addEventListener("mousemove", this.boundMove); 
+    console.log("Mouse mask mounted");
   }
   onDestroy() {
     window.removeEventListener("mousemove", this.boundMove);
+    console.log("Mouse mask destroyed");
   }
   move(e) {
     this.state.x = e.clientX + "px";
     this.state.y = e.clientY + "px";
+    console.log("Mouse moved", this.state.x, this.state.y);
   }
 }
-
 style {
   .mouse-mask {    
     position: fixed;
